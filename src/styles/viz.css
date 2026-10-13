@@ -1,0 +1,175 @@
+/* ================= Visualizer-specific styles ================= */
+.lab-panel .tag { background: rgba(59, 130, 246, .25); color: #bfdbfe; }
+.dimtag { opacity: .5; }
+.warn-box { background: rgba(239, 68, 68, .1); border-color: rgba(239, 68, 68, .4); color: #fecaca; }
+
+/* Spectrum */
+.spectrum-bar { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; }
+.spec-band { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 4px; border-radius: 10px; border: 1.5px solid transparent; background: color-mix(in srgb, var(--c) 35%, #050b1f); color: #fff; transition: transform .2s, box-shadow .2s; }
+.spec-band small { font-size: 10.5px; color: rgba(255, 255, 255, .7); }
+.spec-band:hover { transform: translateY(-3px); }
+.spec-band.on { border-color: #fff; box-shadow: 0 0 18px var(--c); transform: translateY(-4px); }
+.spec-band.seen strong::after { content: ' ✓'; font-size: 10px; }
+
+/* Polar plots */
+.polar-grid { fill: none; stroke: rgba(148, 163, 184, .18); }
+.polar-3db { fill: none; stroke: #fde68a; stroke-dasharray: 4 6; opacity: .6; }
+.polar-pattern { fill: rgba(34, 211, 238, .22); stroke: #22d3ee; stroke-width: 2.5; animation: fadeUp .4s ease; filter: drop-shadow(0 0 8px rgba(34, 211, 238, .5)); }
+.efield { stroke: #f472b6; stroke-width: 4; stroke-linecap: round; animation: pulseE 1s ease-in-out infinite; }
+.efield-circ { fill: none; stroke: #f472b6; stroke-width: 3; stroke-dasharray: 10 6; animation: spin 2s linear infinite; transform-origin: center; }
+.rx-ant { stroke: #22d3ee; stroke-width: 5; stroke-linecap: round; }
+@keyframes pulseE { 50% { opacity: .35; } }
+
+/* Propagation */
+.prop-path { fill: none; stroke-width: 3; stroke-dasharray: 10 8; animation: dash 1s linear infinite; }
+.prop-path.ground { stroke: #fde68a; }
+.prop-path.sky { stroke: #f472b6; }
+.prop-path.los { stroke: #22d3ee; }
+.prop-path.faint { opacity: .35; }
+.prop-path.blocked { stroke: #ef4444; }
+
+/* Line coding & modulation traces */
+.lc-bg { fill: transparent; transition: fill .2s; }
+.lc-row:hover .lc-bg { fill: rgba(255, 255, 255, .03); }
+.lc-row.on .lc-bg { fill: rgba(59, 130, 246, .12); }
+.lc-name { fill: #e2e8f0; font-weight: 700; font-size: 12.5px; }
+.lc-trace { fill: none; stroke: #22d3ee; stroke-width: 2.5; stroke-linejoin: round; }
+.lc-row.on .lc-trace { stroke: #fde68a; filter: drop-shadow(0 0 6px rgba(253, 230, 138, .6)); }
+.mod-trace { fill: none; stroke-width: 2; }
+.mod-trace.m0, .mod-trace.am { stroke: #22d3ee; }
+.mod-trace.m1, .mod-trace.fm { stroke: #f472b6; }
+.mod-trace.m2, .mod-trace.pm { stroke: #a78bfa; }
+.mod-trace.msg { stroke: #fde68a; stroke-width: 2.5; }
+.env-trace { fill: none; stroke: #fde68a; stroke-dasharray: 5 5; opacity: .8; }
+.pcm-hold { fill: none; stroke: #4ade80; stroke-width: 2.5; }
+.alias-trace { fill: none; stroke: #ef4444; stroke-width: 2.5; stroke-dasharray: 7 6; }
+.stem { stroke: rgba(253, 230, 138, .5); stroke-width: 1.5; }
+
+/* Constellation */
+.const-pt { fill: #22d3ee; stroke: #fff; stroke-width: 1.5; transition: r .2s; }
+.const-pt.on { fill: #fde68a; filter: drop-shadow(0 0 8px #fde68a); }
+.const-lbl { fill: #cbd5e1; font-size: 10px; text-anchor: middle; font-family: var(--mono); }
+
+/* Network topologies */
+.net-link { stroke: rgba(148, 163, 184, .4); stroke-width: 2; }
+.net-route { fill: none; stroke: #fde68a; stroke-width: 3; stroke-dasharray: 8 6; animation: dash 1s linear infinite; }
+.net-node { fill: #93c5fd; stroke: #fff; stroke-width: 2; }
+.net-node.ap { fill: #22d3ee; }
+.net-node.src { fill: #4ade80; }
+.net-node.dst { fill: #f472b6; }
+
+/* Satellite link */
+.sat-body { fill: rgba(255, 255, 255, .05); stroke: #a78bfa; stroke-width: 2; }
+.sat-block { fill: #13214a; stroke: #475569; stroke-width: 1.5; transition: all .2s; }
+.sat-block.seen { stroke: #22d3ee; }
+.sat-block.on { fill: #1e3a8a; stroke: #fde68a; stroke-width: 2.5; }
+.sat-lbl { fill: #e2e8f0; font-size: 11px; text-anchor: middle; font-weight: 700; pointer-events: none; }
+.link-up { fill: none; stroke: #f472b6; stroke-width: 3; stroke-dasharray: 10 8; animation: dash 1s linear infinite; }
+.link-down { fill: none; stroke: #22d3ee; stroke-width: 3; stroke-dasharray: 10 8; animation: dash 1s linear infinite; }
+
+/* FDMA / TDMA */
+.fdma-band { fill: rgba(255, 255, 255, .03); stroke: rgba(255, 255, 255, .15); stroke-dasharray: 4 4; }
+.guard { fill: rgba(148, 163, 184, .25); }
+.im-spike { stroke: #ef4444; stroke-width: 3; animation: blink 1s steps(2) infinite; }
+.tdma-ref { fill: #fde68a; }
+.tdma-guard { fill: #334155; }
+.tdma-pre { fill: #64748b; }
+.tdma-data { stroke: rgba(0, 0, 0, .2); }
+
+/* Cells */
+.hex-lbl { fill: #0b1530; font-size: 12px; font-weight: 800; text-anchor: middle; pointer-events: none; }
+.rssi { display: grid; grid-template-columns: 44px 1fr 70px; align-items: center; gap: 8px; font-size: 13px; color: #cbd5e1; }
+.rssi b { font-family: var(--mono); color: #fff; }
+
+/* CDMA */
+.bitcol { fill: rgba(255, 255, 255, .02); }
+.bitcol.odd { fill: rgba(255, 255, 255, .05); }
+.chip-val { fill: #94a3b8; font-size: 10px; text-anchor: middle; font-family: var(--mono); }
+.ua { color: #67e8f9 !important; }
+.ub { color: #f9a8d4 !important; }
+
+/* Wi-Fi evolution */
+.wifi-timeline { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+.wifi-node { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 4px; border-radius: 12px; border: 1.5px solid rgba(255, 255, 255, .12); background: rgba(255, 255, 255, .03); color: #e2e8f0; transition: all .2s; }
+.wifi-node small { color: #8796b8; font-size: 11px; }
+.wifi-node strong { font-size: 12.5px; }
+.wifi-node em { font-style: normal; font-size: 10.5px; color: #67e8f9; }
+.wifi-node.seen { border-color: rgba(34, 211, 238, .45); }
+.wifi-node.on { background: var(--grad); border-color: transparent; transform: translateY(-3px); }
+.wifi-node.on em, .wifi-node.on small { color: #fff; }
+.race-list { display: flex; flex-direction: column; gap: 6px; }
+.race-row { display: grid; grid-template-columns: 80px 1fr 90px; align-items: center; gap: 10px; font-size: 13px; color: #cbd5e1; }
+.race-name { font-family: var(--mono); color: #fff; }
+.race-bar { height: 14px; border-radius: 99px; background: rgba(255, 255, 255, .06); overflow: hidden; }
+.race-bar span { display: block; height: 100%; border-radius: inherit; background: var(--grad); transition: width .5s; }
+.race-bar span.racing { animation-name: raceFill; animation-timing-function: linear; animation-fill-mode: both; }
+.race-time { font-family: var(--mono); color: #fde68a; text-align: right; }
+@keyframes raceFill { from { width: 0; } to { width: 100%; } }
+
+/* Modes / ESS */
+.range-zone { fill: rgba(34, 211, 238, .07); stroke: rgba(34, 211, 238, .5); stroke-dasharray: 6 6; }
+.range-zone.pink { fill: rgba(244, 114, 182, .07); stroke: rgba(244, 114, 182, .5); }
+.ap-box { fill: #22d3ee; stroke: #fff; stroke-width: 2; }
+.ap-box.on { fill: #fde68a; }
+.ap-box.portal { fill: #a78bfa; }
+.bss-zone { fill: rgba(59, 130, 246, .06); stroke: rgba(59, 130, 246, .35); }
+.bss-zone.on { fill: rgba(253, 230, 138, .1); stroke: #fde68a; }
+.net-route.fail { stroke: #ef4444; }
+.lifeline { stroke: rgba(148, 163, 184, .4); stroke-dasharray: 4 6; }
+.seq-arrow { stroke: #fde68a; stroke-width: 2; }
+.seq-arrow.down { stroke: #67e8f9; }
+.seq-msg { animation: fadeUp .35s ease both; }
+
+/* CSMA */
+.csma-stage { overflow-x: auto; }
+.csma-difs { fill: #475569; }
+.csma-backoff { fill: #a78bfa; }
+.csma-tx { fill: #22d3ee; }
+.csma-ack { fill: #4ade80; }
+.csma-frozen { fill: rgba(148, 163, 184, .18); stroke: rgba(148, 163, 184, .35); stroke-dasharray: 3 3; }
+.csma-collision { fill: #ef4444; }
+.csma-timeout { fill: rgba(239, 68, 68, .25); }
+.csma-lbl { fill: #0b1530; font-size: 10px; font-weight: 800; text-anchor: middle; }
+.csma-note { fill: #fde68a; font-size: 10px; }
+.legend { font-size: 12px; color: #a5b4d4; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
+.legend i.csma-difs { background: #475569; } .legend i.csma-backoff { background: #a78bfa; } .legend i.csma-tx { background: #22d3ee; } .legend i.csma-ack { background: #4ade80; } .legend i.csma-frozen { background: rgba(148, 163, 184, .3); } .legend i.csma-collision { background: #ef4444; } .legend i.csma-timeout { background: rgba(239, 68, 68, .35); }
+.hn-arrow { stroke-width: 4; stroke-dasharray: 10 6; animation: dash .8s linear infinite; }
+.hn-arrow.data { stroke: #22d3ee; } .hn-arrow.rts { stroke: #a78bfa; } .hn-arrow.cts { stroke: #fde68a; } .hn-arrow.ack { stroke: #4ade80; } .hn-arrow.bad { stroke: #ef4444; }
+.net-node.boom { fill: #ef4444; animation: shake .4s ease 2; }
+
+/* PHY */
+.mcs-ladder { display: flex; flex-direction: column; gap: 3px; }
+.mcs-step { display: grid; grid-template-columns: 60px 1fr 80px 60px; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 8px; background: rgba(255, 255, 255, .03); font-size: 12.5px; color: #64748b; transition: all .25s; }
+.mcs-step b { color: inherit; }
+.mcs-step em { font-style: normal; font-family: var(--mono); }
+.mcs-step.below { color: #94a3b8; background: rgba(34, 211, 238, .06); }
+.mcs-step.on { background: var(--grad); color: #fff; transform: scale(1.03); }
+
+/* Heat-map */
+.wall { stroke-width: 5; stroke-linecap: round; }
+.wall.drywall { stroke: #e2e8f0; stroke-width: 3; }
+.wall.brick { stroke: #b45309; }
+.wall.concrete { stroke: #0f172a; stroke-width: 6; }
+.heat-legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: #cbd5e1; }
+.heat-legend i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-right: 4px; }
+.heat-legend .wl { height: 4px; }
+.heat-legend .wl.drywall { background: #e2e8f0; } .heat-legend .wl.brick { background: #b45309; } .heat-legend .wl.concrete { background: #0f172a; border: 1px solid #64748b; }
+
+/* Infrared */
+.room { fill: rgba(255, 255, 255, .02); stroke: #94a3b8; stroke-width: 3; }
+.ir-beam { fill: none; stroke: #ef4444; stroke-width: 4; stroke-dasharray: 10 8; animation: dash .7s linear infinite; filter: drop-shadow(0 0 6px #ef4444); }
+.ir-beam.diffuse { stroke-width: 2; opacity: .7; }
+.ir-dev { fill: #1e293b; stroke: #94a3b8; stroke-width: 2; }
+.ir-dev.lit { stroke: #4ade80; fill: #14532d; }
+.ir-pulse { fill: #ef4444; filter: drop-shadow(0 0 4px #ef4444); animation: fadeUp .3s ease both; }
+.remote { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 280px; justify-self: center; background: #111827 !important; border-radius: 28px !important; }
+.remote-btn { padding: 14px 6px; border-radius: 14px; border: 1px solid #334155; background: #1f2937; color: #fff; font-weight: 700; transition: transform .1s; }
+.remote-btn:active { transform: scale(.94); background: #374151; }
+.tv { display: grid; place-items: center; min-height: 180px; }
+.tv-screen { width: 90%; aspect-ratio: 16 / 9; border-radius: 10px; border: 6px solid #1f2937; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #475569; transition: background .3s; }
+.tv-screen.on { background: linear-gradient(135deg, #1e3a8a, #0e7490); color: #fff; }
+.tv-screen .bar { width: 60%; }
+
+@media (max-width: 900px) { .wifi-timeline { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 760px) { .spectrum-bar { grid-template-columns: repeat(4, 1fr); } }

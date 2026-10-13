@@ -1,0 +1,63 @@
+/* ---- Unit V visualizers: WLAN technology & Bluetooth ---- */
+.pulse-ring { transform-box: fill-box; transform-origin: center; animation: ringOut 2.4s ease-out infinite; }
+@keyframes ringOut { from { opacity: .45; } to { opacity: .05; } }
+.wlan-client { fill: #1e293b; stroke: #475569; stroke-width: 2; transition: all .3s; }
+.wlan-client.on { stroke: #22d3ee; fill: #0c2a3f; filter: drop-shadow(0 0 8px rgba(34, 211, 238, .5)); }
+.wlan-client.busy { stroke: #fde68a; animation: pulseE 0.6s ease infinite; }
+
+.floor-room { fill: rgba(148, 163, 184, .06); stroke: rgba(148, 163, 184, .45); stroke-width: 1.5; }
+.need-list { margin: 0; padding-left: 18px; color: #cbd5e1; font-size: 13.5px; display: flex; flex-direction: column; gap: 4px; }
+
+.req-meters { display: flex; flex-direction: column; gap: 6px; }
+.req-row { display: grid; grid-template-columns: 22px 1fr auto; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 10px; font-size: 13px; transition: all .3s; }
+.req-row b { color: #e2e8f0; }
+.req-row small { color: #94a3b8; font-family: var(--mono); font-size: 11.5px; }
+.req-row.ok { background: rgba(34, 197, 94, .12); border: 1px solid rgba(34, 197, 94, .4); }
+.req-row.ok span { color: #4ade80; font-weight: 800; }
+.req-row.bad { background: rgba(248, 113, 113, .08); border: 1px solid rgba(248, 113, 113, .3); }
+.req-row.bad span { color: #f87171; font-weight: 800; }
+
+.ir-led { animation: pulseE .25s steps(2) 8; }
+.info-box.bad { background: rgba(248, 113, 113, .1); border-color: rgba(248, 113, 113, .4); color: #fecaca; }
+
+.hop-row { fill: rgba(148, 163, 184, .04); stroke: rgba(148, 163, 184, .12); }
+.hop-row.jam { fill: rgba(248, 113, 113, .22); }
+.hop-cell { fill: #38bdf8; animation: fadeUp .3s ease both; }
+.hop-cell.hit { fill: #f87171; }
+
+.nb-slot { fill: rgba(148, 163, 184, .04); stroke: rgba(148, 163, 184, .2); stroke-dasharray: 4 4; transition: fill .2s; }
+.nb-slot:hover { fill: rgba(148, 163, 184, .1); }
+.nb-slot.on { fill: rgba(34, 211, 238, .08); stroke: #22d3ee; stroke-dasharray: none; }
+
+.bt-stage { display: flex; flex-direction: column; gap: 14px; padding: 16px; }
+.bt-steps { display: flex; gap: 6px; flex-wrap: wrap; }
+.bt-steps span { padding: 6px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; color: #64748b; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .08); }
+.bt-steps span.on { color: #fff; background: linear-gradient(135deg, #2563eb, #0891b2); border-color: transparent; }
+.bt-scene { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
+.bt-phone { width: 170px; height: 280px; border-radius: 26px; padding: 12px 10px; background: #0f172a; border: 2px solid #334155; }
+.bt-phone-screen { height: 100%; border-radius: 16px; background: #f8fafc; padding: 10px; display: flex; flex-direction: column; gap: 6px; color: #0f172a; font-size: 12.5px; }
+.bt-phone-screen > b { color: #2563eb; font-size: 14px; }
+.bt-phone-screen small { color: #64748b; }
+.bt-dev { text-align: left; border: 1px solid #e2e8f0; border-radius: 10px; background: #fff; padding: 7px 8px; font-size: 12px; color: #0f172a; animation: fadeUp .3s ease; display: flex; justify-content: space-between; gap: 4px; }
+.bt-dev:hover:not(:disabled) { border-color: #2563eb; }
+.bt-code { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 18px; text-align: center; }
+.bt-code b { font-family: var(--mono); font-size: 22px; letter-spacing: 2px; color: #0f172a; }
+.bt-code button { margin: 0 3px; padding: 5px 10px; border-radius: 8px; border: 0; background: #2563eb; color: #fff; font-weight: 700; font-size: 12px; }
+.bt-code button:last-child { background: #e2e8f0; color: #334155; }
+.bt-code.small { margin-top: 8px; padding: 6px 8px; background: #f8fafc; border-radius: 8px; }
+.bt-code.small b { font-size: 15px; }
+.bt-waves { text-align: center; font-size: 34px; font-weight: 800; color: #334155; letter-spacing: -4px; }
+.bt-waves.scan { color: #60a5fa; animation: pulseE 1s ease infinite; }
+.bt-waves.on { color: #22d3ee; text-shadow: 0 0 12px rgba(34, 211, 238, .7); }
+.bt-target { display: flex; flex-direction: column; align-items: center; font-size: 54px; }
+
+.pico-zone { fill: rgba(59, 130, 246, .06); stroke: rgba(59, 130, 246, .45); stroke-dasharray: 6 5; }
+.pico-zone.two { fill: rgba(167, 139, 250, .06); stroke: rgba(167, 139, 250, .5); }
+.pico-link { stroke: rgba(96, 165, 250, .5); stroke-width: 2; }
+.pico-link.bridge { stroke: #fde68a; stroke-dasharray: 6 5; animation: dash 1s linear infinite; }
+.pico-node { fill: #1e293b; stroke: #60a5fa; stroke-width: 2; animation: pop .35s ease; }
+.pico-node.central { fill: #1d4ed8; stroke: #fff; }
+.pico-node.central.two { fill: #6d28d9; }
+.pico-node.bridge { fill: #854d0e; stroke: #fde68a; }
+
+@media (max-width: 760px) { .bt-scene { grid-template-columns: 1fr; justify-items: center; } }
