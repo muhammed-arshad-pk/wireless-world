@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { ChevronDown, FlaskConical, Gamepad2, Info, LayoutDashboard, BookOpen, Check } from 'lucide-react';
+import { ChevronDown, FlaskConical, Gamepad2, Info, LayoutDashboard, BookOpen, Check, RotateCcw } from 'lucide-react';
 import { units, allTopics, topicKey } from '../data/units';
 import { useGame, levelInfo } from '../context/GameContext';
 import Logo from './Logo';
 
 export default function Sidebar({ open }) {
   const { pathname } = useLocation();
-  const { state } = useGame();
+  const { state, reset } = useGame();
   const activeUnit = pathname.match(/^\/unit\/(\d+)/)?.[1];
   const [expanded, setExpanded] = useState(() => new Set([activeUnit ?? '2']));
 
@@ -93,6 +93,12 @@ export default function Sidebar({ open }) {
         </div>
         <div className="bar"><span style={{ width: `${pct}%` }} /></div>
         <small className="muted-light">{done} of {topics.length} topics completed</small>
+        <button
+          className="side-reset"
+          onClick={() => window.confirm('Clear all learning history? Completed topics, XP, badges, quiz scores and checklists will be reset.') && reset()}
+        >
+          <RotateCcw size={13} /> Clear progress
+        </button>
       </div>
     </aside>
   );

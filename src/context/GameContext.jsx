@@ -134,7 +134,15 @@ export function GameProvider({ children }) {
     update((s) => ({ ...s, completed: { ...s.completed, [key]: true } }));
   }, [update]);
 
-  const reset = useCallback(() => update(() => EMPTY), [update]);
+  // Wipes XP, badges, completions, quiz scores and every saved checklist/notes tick, then reloads fresh.
+  const reset = useCallback(() => {
+    update(() => EMPTY);
+    try {
+      Object.keys(localStorage).filter((k) => k.startsWith('wirelessworld-')).forEach((k) => localStorage.removeItem(k));
+    } catch { /* storage unavailable */ }
+    window.location.hash = '#/';
+    window.location.reload();
+  }, [update]);
 
   return (
     <GameContext.Provider value={{ state, toasts, completeObjective, recordQuiz, recordArcade, markComplete, reset }}>
